@@ -37,7 +37,7 @@ class GenerateExpressionDataset(Dataset):
         op = random.choice(self.operators)
         right = random.choice(self.digits)
 
-        target_height = 64
+        target_height = 32
         imgs = [self._load_image(label) for label in [left, op, right]]
         imgs = [img.resize((int(target_height * img.width / img.height), target_height), Image.Resampling.LANCZOS) for img in imgs]
         total_width = sum(img.width for img in imgs) + 4 * (len(imgs) - 1)

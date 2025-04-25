@@ -33,7 +33,7 @@ label_dir = train_path + "/train/"
 
 def preprocess_generate_expression_dataset(num_samples=10000, batch_size=64):
     transform = transforms.Compose([
-        transforms.Resize((64, 128)),
+        # transforms.Resize((64, 128)),
         transforms.ToTensor(),
         transforms.Normalize((0.5,), (0.5,))
     ])
@@ -162,7 +162,7 @@ def run_inference(model, data_loader, device):
 
 def infer_single_image(image_path, model, device):
     transform = transforms.Compose([
-        transforms.Resize((64, 128)),  # Resize to match model input size
+        transforms.Resize((32, 128)),  # Resize to match model input size
         transforms.ToTensor(),
         transforms.Normalize((0.5,), (0.5,))
     ])

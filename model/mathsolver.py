@@ -5,10 +5,16 @@ class MathSolverModel(nn.Module):
     def __init__(self, num_classes):
         super(MathSolverModel, self).__init__()
         self.cnn = nn.Sequential(
-            nn.Conv2d(1, 64, 3, padding=1), nn.BatchNorm2d(64), nn.ReLU(), nn.MaxPool2d(2, 2),
-            nn.Conv2d(64, 128, 3, padding=1), nn.BatchNorm2d(128), nn.ReLU(), nn.MaxPool2d(2, 2)
+            nn.Conv2d(1, 64, 3, padding=1),
+            # nn.BatchNorm2d(64),
+            nn.ReLU(),
+            nn.MaxPool2d(2, 2),
+            nn.Conv2d(64, 128, 3, padding=1),
+            # nn.BatchNorm2d(128),
+            nn.ReLU(),
+            nn.MaxPool2d(2, 2)
         )
-        self.rnn = nn.LSTM(2048, 256, bidirectional=True, num_layers=2, batch_first=True)
+        self.rnn = nn.LSTM(1024, 256, bidirectional=True, num_layers=2, batch_first=True)
         self.fc = nn.Linear(512, num_classes)
         self.initialize_weights()
 
