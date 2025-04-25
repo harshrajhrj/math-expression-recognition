@@ -182,3 +182,4 @@ def infer_single_image(image_path, model, device):
         pred = decode_prediction(output)
     
     print(f"Predicted Expression: {pred}")
+    return pred[0]
